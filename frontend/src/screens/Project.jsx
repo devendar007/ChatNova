@@ -5,7 +5,7 @@ import axios from '../config/axios'
 import { initializeSocket, receiveMessage, sendMessage } from '../config/socket'
 import Markdown from 'markdown-to-jsx'
 import hljs from 'highlight.js';
-// import { getWebContainer } from '../config/webcontainer'
+import { getWebContainer } from '../config/webContainer.js'
 
 
 function SyntaxHighlightedCode(props) {
@@ -113,12 +113,12 @@ const Project = () => {
 
         initializeSocket(project._id)
 
-        // if (!webContainer) {
-        //     getWebContainer().then(container => {
-        //         setWebContainer(container)
-        //         console.log("container started")
-        //     })
-        // }
+        if (!webContainer) {
+            getWebContainer().then(container => {
+                setWebContainer(container)
+                console.log("container started")
+            })
+        }
 
 
         receiveMessage('project-message', data => {
