@@ -1,8 +1,8 @@
-# 🚀 ChatNova - AI-Powered Collaborative Development Platform
+# 🚀 DevSync - AI-Powered Collaborative Development Platform
 
 <div align="center">
 
-![ChatNova Logo](https://img.shields.io/badge/ChatNova-AI%20Powered%20Dev%20Platform-blue?style=for-the-badge&logo=react)
+![DevSync Logo](https://img.shields.io/badge/DevSync-AI%20Powered%20Dev%20Platform-blue?style=for-the-badge&logo=react)
 ![React](https://img.shields.io/badge/React-18.3.1-61DAFB?style=for-the-badge&logo=react)
 ![Node.js](https://img.shields.io/badge/Node.js-Express-339933?style=for-the-badge&logo=node.js)
 ![MongoDB](https://img.shields.io/badge/MongoDB-8.15.1-47A248?style=for-the-badge&logo=mongodb)
@@ -17,9 +17,9 @@
 
 ## 🎯 Project Overview
 
-ChatNova is a cutting-edge collaborative development platform that combines the power of AI-assisted coding with real-time collaboration and instant code execution. Built with modern web technologies, it provides a seamless development experience where teams can code together, get AI assistance, and see their applications run instantly in a sandboxed environment.
+DevSync is a cutting-edge collaborative development platform that combines the power of AI-assisted coding with real-time collaboration and instant code execution. Built with modern web technologies, it provides a seamless development experience where teams can code together, get AI assistance, and see their applications run instantly in a sandboxed environment.
 
-### 🌟 What Makes ChatNova Special?
+### 🌟 What Makes DevSync Special?
 
 - **🤖 AI-Powered Development**: Integrated Google Gemini AI for intelligent code generation and assistance
 - **👥 Real-Time Collaboration**: Multi-user coding sessions with live chat and file synchronization
@@ -138,7 +138,7 @@ ChatNova is a cutting-edge collaborative development platform that combines the 
 ## 🏗 Architecture
 
 ```
-ChatNova/
+DevSync/
 ├── Frontend (React + Vite)
 │   ├── Real-time UI with Socket.io
 │   ├── WebContainer integration
