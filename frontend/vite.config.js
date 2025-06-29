@@ -19,5 +19,20 @@ export default defineConfig({
         rewrite: (path) => path.replace(/^\/cdn/, '')
       }
     }
+  },
+  build: {
+    outDir: 'dist',
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          router: ['react-router-dom']
+        }
+      }
+    }
+  },
+  define: {
+    'process.env': {}
   }
 })
