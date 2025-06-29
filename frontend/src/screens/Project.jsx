@@ -28,8 +28,8 @@ const Project = () => {
 
     const location = useLocation()
 
-    const [ isSidePanelOpen, setIsSidePanelOpen ] = useState(false)
-    const [ isModalOpen, setIsModalOpen ] = useState(false)
+    const [ isSidePanelOpen, setIsSidePanelOpen ] = useState(false)   // this is for checking the user in the group
+    const [ isModalOpen, setIsModalOpen ] = useState(false)   // this is ui for create project
     const [ selectedUserId, setSelectedUserId ] = useState(new Set()) // Initialized as Set
     const [ project, setProject ] = useState(location.state.project)
     const [ message, setMessage ] = useState('')
