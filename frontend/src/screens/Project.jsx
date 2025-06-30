@@ -298,45 +298,56 @@ const Project = () => {
                         </div>
 
                         <div className="actions flex gap-2">
-                            <button
-                                onClick={async () => {
-                                    await webContainer.mount(fileTree)
+                           <button
+    onClick={async () => {
+        try {
+            if (!webContainer) {
+                console.error("WebContainer is not initialized.");
+                return;
+            }
 
+            if (!fileTree) {
+                console.error("fileTree is not defined.");
+                return;
+            }
 
-                                    const installProcess = await webContainer.spawn("npm", [ "install" ])
+            await webContainer.mount(fileTree);
 
+            const installProcess = await webContainer.spawn("npm", ["install"]);
 
+            installProcess.output.pipeTo(new WritableStream({
+                write(chunk) {
+                    console.log(chunk);
+                }
+            }));
 
-                                    installProcess.output.pipeTo(new WritableStream({
-                                        write(chunk) {
-                                            console.log(chunk)
-                                        }
-                                    }))
+            if (runProcess) {
+                runProcess.kill();
+            }
 
-                                    if (runProcess) {
-                                        runProcess.kill()
-                                    }
+            const tempRunProcess = await webContainer.spawn("npm", ["start"]);
 
-                                    let tempRunProcess = await webContainer.spawn("npm", [ "start" ]);
+            tempRunProcess.output.pipeTo(new WritableStream({
+                write(chunk) {
+                    console.log(chunk);
+                }
+            }));
 
-                                    tempRunProcess.output.pipeTo(new WritableStream({
-                                        write(chunk) {
-                                            console.log(chunk)
-                                        }
-                                    }))
+            setRunProcess(tempRunProcess);
 
-                                    setRunProcess(tempRunProcess)
+            webContainer.on('server-ready', (port, url) => {
+                console.log(port, url);
+                setIframeUrl(url);
+            });
+        } catch (error) {
+            console.error("An error occurred:", error);
+        }
+    }}
+    className="p-2 px-4 bg-slate-300 text-white"
+>
+    Run
+</button>
 
-                                    webContainer.on('server-ready', (port, url) => {
-                                        console.log(port, url)
-                                        setIframeUrl(url)
-                                    })
-
-                                }}
-                                className='p-2 px-4 bg-slate-300 text-white'
-                            >
-                                run
-                            </button>
 
 
                         </div>
